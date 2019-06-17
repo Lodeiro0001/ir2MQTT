@@ -8,7 +8,7 @@
 #define WIFI_SSID "your_wifi_ssid"
 #define WIFI_PASSWORD "your_wifi_password"
 #define MQTT_BROKER_IP "your_mqtt_server_ip"
-#define MQTT_SERVER_PORT 0 // Put yours
+#define MQTT_BROKER_PORT 0 // Put yours
 #define MQTT_USER "your_mqtt_username"
 #define MQTT_PASSWORD "your_mqtt_password"
 #define CLIENT_NAME "your_room_name" // Used to form the topic
