@@ -36,7 +36,7 @@ const IR_PROTOCOLS = {
 
 function postCommand(room_name, device_name, command_name, command_code) {
     if (room_name && device_name && command_name && command_code) {
-        axios.post('http://localhost:8381/commands', {
+        axios.post('http://localhost:8420/commands', {
             room: room_name,
             device: device_name,
             command_name: command_name,
@@ -57,7 +57,7 @@ function deleteCommand(command_name, command_id) {
     if (confirm(`Do you want to delete the ` + command_name + ` command?
     
 Changes can not be undone!`)) {
-        axios.delete('http://localhost:8381/commands?id=' + command_id)
+        axios.delete('http://localhost:8420/commands?id=' + command_id)
             .then(function (response) {
                 location.reload();
             })

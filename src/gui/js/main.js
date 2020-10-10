@@ -1,6 +1,6 @@
 let commands = {};
 
-axios.get('http://localhost:8381/commands')
+axios.get('http://localhost:8420/commands')
     .then(function (response) {
         response.data.map(function (command) {
             if (!commands.hasOwnProperty(command.room)) {
