@@ -1,0 +1,33 @@
+name: Build, Test & Push
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - '**'  # all branches
+
+jobs:
+  buildTestPush:
+    name: Build, Test & Push
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      # Build
+      - name: Docker build
+        run: docker build . -t ir2mqtt
+
+      # Test
+      - name: (test) Start container
+        run: docker run --rm --name=ir2mqtt -p 8420:8420 ir2mqtt
+      - name: (test) Wait for port
+        uses: MaximeGoyette/wait-for-it-action@master
+        with:
+          host: 127.0.0.1
+          port: 8420
+      - name: (test) Access the frontend
+        run: curl -f http://localhost:8420
