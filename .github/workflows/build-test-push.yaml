@@ -23,7 +23,7 @@ jobs:
 
       # Test
       - name: (test) Start container
-        run: docker run --rm --name=ir2mqtt -p 8420:8420 ir2mqtt
+        run: docker run --rm -d --name=ir2mqtt -p 8420:8420 ir2mqtt
       - name: (test) Wait for port
         uses: MaximeGoyette/wait-for-it-action@master
         with:
