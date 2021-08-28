@@ -17,12 +17,15 @@ jobs:
         with:
           fetch-depth: 1
       - name: Install wait-for-it
-        run: apt-get -yq install wait-for-it
+        run: sudo apt-get -yq install wait-for-it
 
       # Build
       - name: Docker cache
         uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
+        with:
+          key: "ir2MQTT-docker-cache-{hash}"
+          restore-keys: "ir2MQTT-docker-cache-"
       - name: Docker build
         run: docker build . -t ir2mqtt
 
