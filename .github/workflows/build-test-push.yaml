@@ -18,12 +18,15 @@ jobs:
           fetch-depth: 1
 
       # Build
+      - name: Docker cache
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - name: Docker build
         run: docker build . -t ir2mqtt
 
       # Test
       - name: (test) Start container
-        run: docker run --rm -d --name=ir2mqtt -p 8420:8420 ir2mqtt
+        run: docker run --rm -d --name=ir2mqtt --net=host ir2mqtt
       - name: (test) Wait for port
         uses: MaximeGoyette/wait-for-it-action@master
         with:
