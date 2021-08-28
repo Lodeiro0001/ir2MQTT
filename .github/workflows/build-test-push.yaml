@@ -28,9 +28,11 @@ jobs:
       - name: (test) Start container
         run: docker run --rm -d --name=ir2mqtt --net=host ir2mqtt
       - name: (test) Wait for port
-        uses: MaximeGoyette/wait-for-it-action@master
+        uses: nev7n/wait_for_response@v1
         with:
-          host: 127.0.0.1
-          port: 8420
+          url: "http://localhost:8420"
+          responseCode: 200
+          timeout: 15000
+          interval: 200
       - name: (test) Access the frontend
         run: curl -f http://localhost:8420
