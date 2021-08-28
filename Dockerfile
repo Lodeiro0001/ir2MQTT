@@ -8,4 +8,6 @@ RUN curl -L -f https://github.com/Lodeiro0001/ir2MQTT/releases/download/${IR2MQT
 FROM scratch
 
 COPY --from=download /tmp/ir2MQTT/ /ir2MQTT
-ENTRYPOINT ["/ir2MQTT/ir2MQTT"]
+WORKDIR /ir2MQTT
+
+ENTRYPOINT ["./ir2MQTT"]
