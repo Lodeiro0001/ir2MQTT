@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "master"
+      - "workflow-build"  # TODO Remove before merge
 
 jobs:
   build:
