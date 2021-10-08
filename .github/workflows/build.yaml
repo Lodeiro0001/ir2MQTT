@@ -1,0 +1,14 @@
+name: "Build go binary"
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    name: Build
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
