@@ -11,11 +11,9 @@ func GetConnection() *sql.DB {
 		return database
 	}
 
-	var error error
-
-	database, error = sql.Open("sqlite3", "ir2MQTT.sqlite")
-	if error != nil {
-		panic(error)
+	database, err = sql.Open("sqlite3", getDatabasePath())
+	if err != nil {
+		panic(err)
 	}
 	return database
 }
@@ -31,9 +29,9 @@ func CreateDatabase() error {
             ir_code VARCHAR(10) NULL
          );`
 
-	_, error := database.Exec(query)
-	if error != nil {
-		return error
+	_, err := database.Exec(query)
+	if err != nil {
+		return err
 	}
 
 	return nil
