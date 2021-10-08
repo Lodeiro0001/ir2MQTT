@@ -11,7 +11,7 @@ func GetConnection() *sql.DB {
 		return database
 	}
 
-	database, err = sql.Open("sqlite3", getDatabasePath())
+	database, err := sql.Open("sqlite3", getDatabasePath())
 	if err != nil {
 		panic(err)
 	}
