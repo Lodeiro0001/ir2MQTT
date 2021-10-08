@@ -20,7 +20,10 @@ jobs:
           go-version: '^1.16' # The Go version to download (if necessary) and use.
       - name: Change directory
         run: cd ./src
+      - name: ls
+        run: ls
       - name: Build
+        working-directory: ./src
         run: go build
       - name: ls
         run: ls
