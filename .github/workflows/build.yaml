@@ -10,8 +10,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      working-directory: "./src"
 
     steps:
       - name: Checkout
@@ -20,8 +18,8 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: '^1.16' # The Go version to download (if necessary) and use.
-      - name: ls
-        run: ls
+      - name: Change directory
+        run: cd ./src
       - name: Build
         run: go build
       - name: ls
